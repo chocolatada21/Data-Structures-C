@@ -1,18 +1,18 @@
 #include <stdio.h>
-#include "../linked list/header/linked_list.h"
-
+//#include "../linked_list/header/linked_list.h"
+//#include "../stack/header/stack.h"
+#include "../queue/header/queue.h"
 int main(void) {
-    LinkedList ll = create_linked_list();
-    int y;
-    for(int i = 0 ; i <= 10 ; i++) {
-        y = i*3 + 10;
-        ll_insert(ll, y);
+    Queue queue = create_queue();
+    int a = 1;
+    int b = 2;
+    int c = 3;
+    queue_insert(queue, &a);
+    queue_insert(queue, &b);
+    queue_insert(queue, &c);
+    Node node = queue_remove(queue);
+    while(node != NULL) {
+        printf("%d ", *(int*) node->value);
+        node = queue_remove(queue);
     }
-    printf("First print\n");
-    ll_print(ll);
-    ll_remove(ll, 7);
-    printf("\nSecond print\n");
-    ll_print(ll);
-    ll_free(ll);
-    printf("\nFinished\n");
 }
